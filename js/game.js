@@ -1,7 +1,9 @@
 const grid = document.querySelector(".grid");
 const spanPlayer = document.querySelector(".player");
 const timer = document.querySelector(".timer");
-
+const main = document.querySelector("main");
+const para = document.querySelector(".parabens");
+const score = document.querySelector(".score");
 const characters = [
     "beth",
     "jerry",
@@ -15,6 +17,21 @@ const characters = [
     "scroopy",
 ];
 
+const createConfetti = () => {
+    const confettiContainer = document.getElementById("confetti-container");
+    confettiContainer.style.overflow = "hidden";
+    for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.style.left = Math.random() * window.innerWidth + "px";
+        confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
+        confettiContainer.appendChild(confetti);
+        // setTimeout(() => {
+        //     confetti.remove();
+        // }, 25000);
+    }
+};
+
 const createElement = (tag, className) => {
     const element = document.createElement(tag);
     element.className = className;
@@ -27,12 +44,12 @@ let secondCard = "";
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll(".disabled-card");
 
-    if (disabledCards.length === 20) {
+    if (disabledCards.length === characters.length * 2) {
         clearInterval(this.loop);
         setTimeout(() => {
-            alert(
-                `Parabéns, ${spanPlayer.innerHTML}! Seu tempo foi de: ${timer.innerHTML}`
-            );
+            para.style.display = "flex";
+            score.innerHTML = timer.innerHTML;
+            createConfetti();
         }, 500);
     }
 };

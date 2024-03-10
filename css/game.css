@@ -28,12 +28,12 @@ header {
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 .card {
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
     width: 100%;
     border-radius: 5px;
     position: relative;
@@ -71,8 +71,54 @@ header {
     opacity: 0.5;
 }
 
-@media screen and (max-width: 920px) {
+.confetti {
+    width: 10px;
+    height: 10px;
+    background-color: #e44d26;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 3;
+    overflow: hidden;
+    animation: fall 60s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.parabens {
+    z-index: 2;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    width: 100vh;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.para {
+    font-size: 4em;
+    font-weight: 900;
+}
+.tempo {
+    margin: 20px;
+    font-size: 1.5em;
+    font-weight: 900;
+}
+.score {
+    font-size: 2.8em;
+    font-weight: 900;
+}
+/* @media screen and (max-width: 920px) {
     .grid {
         grid-template-columns: repeat(5, 1fr);
     }
-}
+} */
